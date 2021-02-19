@@ -6,11 +6,11 @@
 /*   By: ebenyoub <ebenyoub@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 17:45:28 by ebenyoub          #+#    #+#             */
-/*   Updated: 2020/12/24 01:37:39 by ebenyoub         ###   ########lyon.fr   */
+/*   Updated: 2021/02/19 13:22:30 by ebenyoub         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../includes/minishell.h"
 
 int		next_line(char **tmp, char **line, gnl_t *g)
 {

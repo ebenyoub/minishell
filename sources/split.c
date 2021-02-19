@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "minishell.h"
+#include "../includes/minishell.h"
 
 
 void    pass_space_split(int *i, char sep, char *str)
@@ -38,7 +38,7 @@ int		count_words(char *str, char sep)
 
 char	**ft_split(char *str, char sep)
 {
-	char	**tab;
+	char	**cmd;
 	int		words;
 	int		i;
 	int		a;
@@ -51,7 +51,7 @@ char	**ft_split(char *str, char sep)
 	if (!str)
 		return (NULL);
 	words = count_words(str, sep);
-	if (!(tab = malloc(sizeof(char *) * (words + 1))))
+	if (!(cmd = malloc(sizeof(char *) * (words + 1))))
 		return (NULL);
 	while (a < words)
 	{
@@ -60,28 +60,28 @@ char	**ft_split(char *str, char sep)
 		pass_space_split(&i, sep, str);
 		while (str[i + b] && str[i + b] != '\n' && str[i + b] != sep)
 			b++;
-		if (!(tab[a] = malloc(sizeof(char) * b + 1)))
+		if (!(cmd[a] = malloc(sizeof(char) * b + 1)))
 			return (NULL);
 		while (c < b)
-			tab[a][c++] = str[i++];
-		tab[a][c] = '\0';
+			cmd[a][c++] = str[i++];
+		cmd[a][c] = '\0';
 		a++;
 	}
-	tab[a] = NULL;
-	return (tab);
+	cmd[a] = NULL;
+	return (cmd);
 }
 
-void	free_tab(char **tab)
+void	free_cmd(char **cmd)
 {
 	int		i;
 
 	i = 0;
-	while (tab[i])
+	while (cmd[i])
 	{
-		free(tab[i]);
-		tab[i] = NULL;
+		free(cmd[i]);
+		cmd[i] = NULL;
 		i++;
 	}
-	free(tab);
-	tab = NULL;
+	free(cmd);
+	cmd = NULL;
 }

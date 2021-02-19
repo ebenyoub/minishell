@@ -10,12 +10,14 @@
 #include <string.h>
 #include <errno.h>
 #include <signal.h>
+#include <sys/types.h> 
+#include <sys/stat.h> 
 
 # define BUFF 10
 
 typedef struct		mini_s
 {
-	char	**tab;
+	char	**cmd;
 	char    *buffer;
 	char	*tmp;
 	int     buff;
@@ -43,8 +45,11 @@ char    *ft_strdup(char *str);
 char    *ft_strjoin(char *s1, char *s2);
 void    afree(char **str);
 int     pass_space(char *str);
-void	free_tab(char **tab);
+void	free_cmd(char **cmd);
 char	**ft_split(char *str, char sep);
-char    *get_absolute_path(char **env);
+int 	get_absolute_path(char **env, mini_t *a);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_strcat(char *s1, char *s2);
+void	*ft_calloc(size_t count, size_t size);
 
 #endif
